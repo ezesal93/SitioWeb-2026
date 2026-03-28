@@ -283,7 +283,6 @@
             
             <div class="space-y-4" x-data="{ active: null }">
                 
-                <!-- Pregunta 1 -->
                 <div class="bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100">
                     <button 
                         @click="active = (active === 1 ? null : 1)" 
@@ -302,14 +301,13 @@
                     </div>
                 </div>
 
-                <!-- Pregunta 2 -->
                 <div class="bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100">
                     <button 
                         @click="active = (active === 2 ? null : 2)" 
                         class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none transition-colors"
                         :class="active === 2 ? 'bg-blue-50' : ''"
                     >
-                        <span class="font-bold text-lg" :class="active === 2 ? 'text-blue-700' : 'text-gray-800'">¿Dónde se realizan las clases presenciales?</span>
+                        <span class="font-bold text-lg" :class="active === 2 ? 'text-blue-700' : 'text-gray-800'">¿Qué incluye el material asincrónico?</span>
                         <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300" :class="active === 2 ? 'rotate-180' : ''"></i>
                     </button>
                     <div 
@@ -317,18 +315,17 @@
                         x-collapse 
                         class="px-6 py-4 text-gray-600 leading-relaxed border-t border-gray-50"
                     >
-                        Las clases presenciales se realizan en la ciudad de Valdivia, en el domicilio del estudiante. El valor es de $35.000 por sesión de 90 minutos.
+                        Tendrás una biblioteca digital con guías de ejercicios paso a paso, resúmenes teóricos clave y cápsulas en video enfocadas en los temas que más aparecen en la PAES de Química.
                     </div>
                 </div>
 
-                <!-- Pregunta 3 -->
                 <div class="bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100">
                     <button 
                         @click="active = (active === 3 ? null : 3)" 
                         class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none transition-colors"
                         :class="active === 3 ? 'bg-blue-50' : ''"
                     >
-                        <span class="font-bold text-lg" :class="active === 3 ? 'text-blue-700' : 'text-gray-800'">¿Qué incluye el material asincrónico?</span>
+                        <span class="font-bold text-lg" :class="active === 3 ? 'text-blue-700' : 'text-gray-800'">¿Dónde se realizan las clases presenciales?</span>
                         <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300" :class="active === 3 ? 'rotate-180' : ''"></i>
                     </button>
                     <div 
@@ -336,35 +333,34 @@
                         x-collapse 
                         class="px-6 py-4 text-gray-600 leading-relaxed border-t border-gray-50"
                     >
-                        Tendrás una biblioteca digital con guías de ejercicios paso a paso, resúmenes teóricos clave y cápsulas en video enfocadas en los temas que más aparecen en la PAES de Química.
+                        Las clases presenciales se realizan en la ciudad de Valdivia, en el domicilio del estudiante. El valor es de $35.000 por sesión de 90 minutos.
                     </div>
                 </div>
 
-                <!-- Pregunta 4 -->
                 <div class="bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100">
-    <button 
-        @click="active = (active === 4 ? null : 4)" 
-        class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none transition-colors"
-        :class="active === 4 ? 'bg-blue-50' : ''"
-    >
-        <span class="font-bold text-lg" :class="active === 4 ? 'text-blue-700' : 'text-gray-800'">¿Cuáles son los medios de pago disponibles?</span>
-        <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300" :class="active === 4 ? 'rotate-180' : ''"></i>
-    </button>
-    <div 
-        x-show="active === 4" 
-        x-collapse 
-        class="px-6 py-4 text-gray-600 leading-relaxed border-t border-gray-50"
-    >
-        <p class="mb-3">Para tu comodidad, aceptamos <strong>tarjetas de crédito, débito y transferencias</strong> a través de las siguientes modalidades:</p>
-        <ul class="list-disc ml-5 space-y-2">
-            <li><strong>Clases Online y Planes:</strong> Se envían mediante un <strong>Link de Pago seguro</strong> de Mercado Pago.</li>
-            <li><strong>Clases Presenciales:</strong> Puedes pagar directamente al finalizar la sesión con <strong>todo medio de pago</strong>, ya que cuento con terminal de pago móvil (Point) para procesar tu tarjeta en el lugar.</li>
-        </ul>
-        <p class="mt-3 text-sm italic text-blue-600 font-medium">
-            <i class="fas fa-shield-alt mr-1"></i> Todos los pagos son procesados de forma segura y recibes tu comprobante al instante.
-        </p>
-    </div>
-</div>
+                    <button 
+                        @click="active = (active === 4 ? null : 4)" 
+                        class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none transition-colors"
+                        :class="active === 4 ? 'bg-blue-50' : ''"
+                    >
+                        <span class="font-bold text-lg" :class="active === 4 ? 'text-blue-700' : 'text-gray-800'">¿Cuáles son los medios de pago disponibles?</span>
+                        <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300" :class="active === 4 ? 'rotate-180' : ''"></i>
+                    </button>
+                    <div 
+                        x-show="active === 4" 
+                        x-collapse 
+                        class="px-6 py-4 text-gray-600 leading-relaxed border-t border-gray-50"
+                    >
+                        <p class="mb-3">Para tu comodidad, aceptamos <strong>tarjetas de crédito, débito y transferencias</strong> a través de las siguientes modalidades:</p>
+                        <ul class="list-disc ml-5 space-y-2 text-gray-600">
+                            <li><strong>Clases Online y Planes:</strong> Se envían mediante un <strong>Link de Pago seguro</strong> de Mercado Pago.</li>
+                            <li><strong>Clases Presenciales:</strong> Puedes pagar directamente al finalizar la sesión con <strong>todo medio de pago</strong>, ya que cuento con terminal de pago móvil (Point) para procesar tu tarjeta en el lugar.</li>
+                        </ul>
+                        <p class="mt-3 text-sm italic text-blue-600 font-medium">
+                            <i class="fas fa-shield-alt mr-1"></i> Todos los pagos son procesados de forma segura y recibes tu comprobante al instante.
+                        </p>
+                    </div>
+                </div>
 
             </div>
         </div>
