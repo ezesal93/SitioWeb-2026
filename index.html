@@ -3,566 +3,471 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ProfeEzequiel - Clases de Química</title>
-    <!-- Tailwind CSS -->
+    <title>ProfeEzequiel – Clases de Química Online | PAES & Particulares</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Alpine.js para la lógica del acordeón (Ligero y compatible con Tailwind) -->
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            scroll-behavior: smooth;
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --blue-deep: #0f2d6b;
+            --blue-mid: #1a4db8;
+            --blue-bright: #2c6cf5;
+            --blue-light: #e8f0fe;
+            --accent: #f97316;
+            --green: #16a34a;
+            --text: #0f172a;
+            --muted: #64748b;
+            --border: #e2e8f0;
+            --surface: #f8fafc;
         }
 
-        .gradient-bg {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-        }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--text); background: #fff; -webkit-font-smoothing: antialiased; }
 
-        .glass-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
+        /* NAV */
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+        .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+        .logo { font-size: 20px; font-weight: 800; color: var(--blue-deep); letter-spacing: -0.5px; }
+        .logo span { color: var(--blue-bright); }
+        .nav-links a { font-size: 14px; font-weight: 500; color: var(--muted); text-decoration: none; margin-left: 28px; transition: color .2s; }
+        .nav-links a:hover { color: var(--blue-bright); }
+        .nav-cta { background: var(--blue-bright); color: #fff; padding: 9px 20px; border-radius: 8px; font-size: 14px; font-weight: 700; text-decoration: none; margin-left: 20px; transition: background .2s, transform .1s; white-space: nowrap; }
+        .nav-cta:hover { background: var(--blue-mid); transform: translateY(-1px); }
 
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: #25d366;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
-            z-index: 100;
-            transition: transform 0.3s;
-            text-decoration: none;
-        }
+        /* HERO */
+        .hero { padding: 140px 24px 80px; background: linear-gradient(160deg, #0a1f52 0%, #1a4db8 55%, #2563eb 100%); position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+        .hero-inner { max-width: 760px; margin: 0 auto; text-align: center; position: relative; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 13px; font-weight: 600; padding: 6px 16px; border-radius: 100px; margin-bottom: 28px; }
+        .hero-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 0 3px rgba(74,222,128,0.3); animation: pulse 2s infinite; }
+        @keyframes pulse { 0%,100%{box-shadow:0 0 0 3px rgba(74,222,128,.3)} 50%{box-shadow:0 0 0 6px rgba(74,222,128,.1)} }
+        .hero h1 { font-size: clamp(32px, 5vw, 58px); font-weight: 800; line-height: 1.1; color: #fff; letter-spacing: -1.5px; margin-bottom: 20px; }
+        .hero h1 em { font-style: normal; color: #93c5fd; }
+        .hero p { font-size: 18px; color: rgba(255,255,255,0.82); line-height: 1.65; max-width: 580px; margin: 0 auto 36px; }
+        .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 52px; }
+        .btn-primary { background: var(--accent); color: #fff; padding: 16px 32px; border-radius: 10px; font-size: 16px; font-weight: 700; text-decoration: none; transition: all .2s; display: inline-flex; align-items: center; gap: 8px; }
+        .btn-primary:hover { background: #ea6c0a; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(249,115,22,.4); color: #fff; }
+        .btn-secondary { background: rgba(255,255,255,0.12); border: 1.5px solid rgba(255,255,255,0.3); color: #fff; padding: 15px 28px; border-radius: 10px; font-size: 16px; font-weight: 600; text-decoration: none; transition: all .2s; display: inline-flex; align-items: center; gap: 8px; }
+        .btn-secondary:hover { background: rgba(255,255,255,0.2); color: #fff; }
+        .social-row { display: flex; align-items: center; justify-content: center; gap: 20px; }
+        .social-row a { color: rgba(255,255,255,0.7); font-size: 22px; text-decoration: none; transition: color .2s, transform .2s; }
+        .social-row a:hover { color: #fff; transform: scale(1.15); }
 
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            color: white;
+        /* TRUST BAR */
+        .trust-bar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 20px 24px; }
+        .trust-bar-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 36px; flex-wrap: wrap; }
+        .trust-item { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; color: var(--text); }
+        .trust-item i { color: var(--blue-bright); font-size: 15px; }
+
+        /* SECTIONS */
+        section { padding: 80px 24px; }
+        .section-inner { max-width: 1100px; margin: 0 auto; }
+        .section-label { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--blue-bright); margin-bottom: 12px; }
+        .section-title { font-size: clamp(26px, 3.5vw, 40px); font-weight: 800; letter-spacing: -0.8px; color: var(--text); line-height: 1.15; }
+        .section-sub { font-size: 17px; color: var(--muted); line-height: 1.65; margin-top: 12px; max-width: 520px; }
+
+        /* PLANS */
+        .plans-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 48px; }
+        .plan-card { border: 1.5px solid var(--border); border-radius: 20px; padding: 36px 32px; background: #fff; position: relative; transition: border-color .2s, transform .2s, box-shadow .2s; display: flex; flex-direction: column; }
+        .plan-card:hover { border-color: var(--blue-bright); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(44,108,245,.1); }
+        .plan-card.featured { border-color: var(--blue-bright); background: var(--blue-deep); }
+        .plan-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 5px 16px; border-radius: 100px; white-space: nowrap; }
+        .plan-name { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+        .plan-card.featured .plan-name { color: #fff; }
+        .plan-desc { font-size: 14px; color: var(--muted); margin-bottom: 24px; }
+        .plan-card.featured .plan-desc { color: rgba(255,255,255,.65); }
+        .plan-price { font-size: 48px; font-weight: 800; letter-spacing: -2px; color: var(--text); line-height: 1; }
+        .plan-card.featured .plan-price { color: #fff; }
+        .plan-price span { font-size: 16px; font-weight: 500; color: var(--muted); letter-spacing: 0; }
+        .plan-card.featured .plan-price span { color: rgba(255,255,255,.6); }
+        .plan-divider { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+        .plan-card.featured .plan-divider { border-color: rgba(255,255,255,.15); }
+        .plan-features { list-style: none; flex: 1; }
+        .plan-features li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--text); margin-bottom: 14px; line-height: 1.5; }
+        .plan-card.featured .plan-features li { color: rgba(255,255,255,.85); }
+        .plan-features li i { color: var(--green); margin-top: 2px; flex-shrink: 0; font-size: 14px; }
+        .plan-card.featured .plan-features li i { color: #4ade80; }
+        .plan-cta { display: block; text-align: center; margin-top: 28px; padding: 15px; border-radius: 10px; font-size: 15px; font-weight: 700; text-decoration: none; transition: all .2s; }
+        .plan-cta-default { background: var(--blue-light); color: var(--blue-mid); }
+        .plan-cta-default:hover { background: var(--blue-bright); color: #fff; }
+        .plan-cta-featured { background: var(--accent); color: #fff; }
+        .plan-cta-featured:hover { background: #ea6c0a; box-shadow: 0 6px 20px rgba(249,115,22,.4); color: #fff; }
+        .plan-payments { text-align: center; margin-top: 14px; font-size: 11px; color: var(--muted); }
+        .plan-card.featured .plan-payments { color: rgba(255,255,255,.45); }
+
+        /* HOW IT WORKS */
+        .how-bg { background: var(--blue-deep); }
+        .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 52px; }
+        .step { text-align: center; padding: 0 20px; }
+        .step-num { width: 56px; height: 56px; border-radius: 50%; background: rgba(255,255,255,.1); border: 2px solid rgba(255,255,255,.2); color: #fff; font-size: 20px; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
+        .step h3 { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+        .step p { font-size: 14px; color: rgba(255,255,255,.6); line-height: 1.6; }
+
+        /* PARTICULARES */
+        .particulares-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 24px; margin-top: 48px; }
+        .part-card { border: 1.5px solid var(--border); border-radius: 20px; padding: 36px 32px; background: #fff; display: flex; flex-direction: column; transition: border-color .2s, transform .2s, box-shadow .2s; }
+        .part-card:hover { border-color: var(--blue-bright); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(44,108,245,.1); }
+        .part-icon { width: 52px; height: 52px; border-radius: 14px; background: var(--blue-light); color: var(--blue-bright); display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 20px; }
+        .part-title { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+        .part-sub { font-size: 14px; color: var(--muted); margin-bottom: 24px; }
+        .part-features { list-style: none; margin-bottom: 24px; }
+        .part-features li { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text); margin-bottom: 10px; }
+        .part-features li i { color: var(--blue-bright); font-size: 13px; }
+        .part-price { font-size: 38px; font-weight: 800; letter-spacing: -1.5px; color: var(--text); }
+        .part-price span { font-size: 15px; font-weight: 500; color: var(--muted); letter-spacing: 0; }
+        .part-cta { display: block; text-align: center; padding: 15px; border-radius: 10px; margin-top: 20px; font-size: 15px; font-weight: 700; text-decoration: none; background: var(--blue-light); color: var(--blue-mid); transition: all .2s; }
+        .part-cta:hover { background: var(--blue-bright); color: #fff; }
+
+        /* SOBRE MÍ */
+        .about-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 60px; align-items: center; margin-top: 48px; }
+        .about-img-wrap { position: relative; }
+        .about-img-wrap::before { content: ''; position: absolute; top: 16px; left: 16px; right: -16px; bottom: -16px; background: var(--blue-light); border-radius: 20px; z-index: 0; }
+        .about-img { width: 100%; border-radius: 18px; position: relative; z-index: 1; aspect-ratio: 1; object-fit: cover; }
+        .about-text { font-size: 16px; color: var(--muted); line-height: 1.75; margin-top: 16px; }
+        .about-stat-row { display: flex; gap: 24px; margin-top: 32px; flex-wrap: wrap; }
+        .about-stat-num { font-size: 36px; font-weight: 800; color: var(--blue-bright); letter-spacing: -1px; }
+        .about-stat-label { font-size: 13px; color: var(--muted); margin-top: 4px; }
+        .about-social { display: flex; gap: 16px; margin-top: 28px; }
+        .about-social a { width: 42px; height: 42px; border-radius: 10px; background: var(--surface); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--text); font-size: 18px; text-decoration: none; transition: all .2s; }
+        .about-social a:hover { background: var(--blue-bright); border-color: var(--blue-bright); color: #fff; transform: translateY(-2px); }
+
+        /* FAQ */
+        .faq-list { margin-top: 48px; max-width: 740px; }
+        .faq-item { border-bottom: 1px solid var(--border); }
+        .faq-btn { width: 100%; background: none; border: none; cursor: pointer; padding: 22px 0; display: flex; justify-content: space-between; align-items: center; text-align: left; font-family: inherit; }
+        .faq-question { font-size: 16px; font-weight: 600; color: var(--text); padding-right: 20px; }
+        .faq-icon { font-size: 14px; color: var(--blue-bright); flex-shrink: 0; transition: transform .3s; }
+        .faq-answer { font-size: 15px; color: var(--muted); line-height: 1.7; padding-bottom: 20px; display: none; }
+        .faq-item.open .faq-icon { transform: rotate(45deg); }
+        .faq-item.open .faq-answer { display: block; }
+
+        /* CTA FINAL */
+        .cta-section { background: linear-gradient(135deg, #0a1f52, #1a4db8); padding: 80px 24px; text-align: center; }
+        .cta-inner { max-width: 640px; margin: 0 auto; }
+        .cta-section h2 { font-size: clamp(28px, 4vw, 44px); font-weight: 800; color: #fff; letter-spacing: -1px; margin-bottom: 16px; }
+        .cta-section p { font-size: 17px; color: rgba(255,255,255,.75); margin-bottom: 36px; line-height: 1.65; }
+
+        /* FOOTER */
+        footer { background: #050f24; padding: 48px 24px 32px; }
+        .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center; }
+        .footer-logo { font-size: 22px; font-weight: 800; color: #fff; }
+        .footer-logo span { color: #60a5fa; }
+        .footer-links { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; }
+        .footer-links a { color: rgba(255,255,255,.5); text-decoration: none; font-size: 14px; transition: color .2s; }
+        .footer-links a:hover { color: #fff; }
+        .footer-copy { font-size: 13px; color: rgba(255,255,255,.35); }
+
+        /* WHATSAPP */
+        .wa-float { position: fixed; bottom: 28px; right: 28px; z-index: 200; width: 58px; height: 58px; border-radius: 50%; background: #25d366; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 28px; text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,.5); transition: transform .2s, box-shadow .2s; }
+        .wa-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,.65); color: #fff; }
+
+        /* MOBILE */
+        .mobile-menu-btn { display: none; background: none; border: none; font-size: 22px; cursor: pointer; color: var(--text); }
+        #mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; background: #fff; border-bottom: 1px solid var(--border); padding: 12px 24px 20px; z-index: 99; }
+        #mobile-menu a { display: block; padding: 12px 0; font-size: 15px; font-weight: 600; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); }
+        #mobile-menu .m-cta { background: var(--blue-bright); color: #fff; text-align: center; border-radius: 8px; margin-top: 12px; border: none; }
+
+        @media (max-width: 768px) {
+            .nav-links, .nav-cta { display: none; }
+            .mobile-menu-btn { display: block; }
+            .about-grid { grid-template-columns: 1fr; }
+            .hero { padding: 110px 24px 60px; }
+            .steps { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 480px) {
+            .steps { grid-template-columns: 1fr; }
+            .about-stat-row { justify-content: center; }
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body>
 
-    <!-- Navegación -->
-    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
-                <div class="flex-shrink-0 flex items-center">
-                    <span class="text-2xl font-bold text-blue-700">Profe<span class="text-blue-500">Ezequiel</span></span>
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#inicio" class="text-gray-600 hover:text-blue-600 transition font-medium">Inicio</a>
-                        <a href="#paes" class="text-gray-600 hover:text-blue-600 transition font-medium">Plan PAES</a>
-                        <a href="#particulares" class="text-gray-600 hover:text-blue-600 transition font-medium">Particulares</a>
-                        <a href="#sobre-mi" class="text-gray-600 hover:text-blue-600 transition font-medium">Sobre mí</a>
-                        <a href="#faq" class="text-gray-600 hover:text-blue-600 transition font-medium">FAQ</a>
+<nav>
+    <div class="nav-inner">
+        <div class="logo">Profe<span>Ezequiel</span></div>
+        <div class="nav-links">
+            <a href="#planes">Planes PAES</a>
+            <a href="#particulares">Particulares</a>
+            <a href="#como-funciona">Cómo funciona</a>
+            <a href="#sobre-mi">Sobre mí</a>
+            <a href="#faq">FAQ</a>
+        </div>
+        <a href="https://wa.me/+56953324625" class="nav-cta"><i class="fab fa-whatsapp"></i> Consultar ahora</a>
+        <button class="mobile-menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
+    </div>
+</nav>
+<div id="mobile-menu">
+    <a href="#planes">Planes PAES</a>
+    <a href="#particulares">Particulares</a>
+    <a href="#como-funciona">Cómo funciona</a>
+    <a href="#sobre-mi">Sobre mí</a>
+    <a href="#faq">FAQ</a>
+    <a href="https://wa.me/+56953324625" class="m-cta"><i class="fab fa-whatsapp"></i>Consultar ahora</a>
+</div>
+
+<header class="hero">
+    <div class="hero-inner">
+        <div class="hero-badge">
+            <span class="dot"></span>
+            Clases disponibles ahora — cupos limitados
+        </div>
+        <h1>Domina la química.<br><em>Sube tu puntaje PAES.</em></h1>
+        <p>Clases online individuales con un profe especializado. Material exclusivo, metodología probada y acompañamiento real desde Valdivia para todo Chile.</p>
+        <div class="hero-btns">
+            <a href="#planes" class="btn-primary"><i class="fas fa-rocket"></i> Ver planes PAES</a>
+            <a href="https://wa.me/+56953324625" class="btn-secondary"><i class="fab fa-whatsapp"></i> Hablar con Ezequiel</a>
+        </div>
+        <div class="social-row">
+            <a href="https://www.instagram.com/profeezequiel_cl?igsh=NWU2bmh0M3V0NG50"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@profeezequiel_cl?_r=1&_t=ZS-9542kXK3Gsu"><i class="fab fa-tiktok"></i></a>
+            <a href="https://youtube.com/@profeezequiel_cl?si=KogLi15Li8GCYX1z"><i class="fab fa-youtube"></i></a>
+        </div>
+    </div>
+</header>
+
+<div class="trust-bar">
+    <div class="trust-bar-inner">
+        <div class="trust-item"><i class="fas fa-user-graduate"></i> 100% individual</div>
+        <div class="trust-item"><i class="fas fa-video"></i> Clases en vivo</div>
+        <div class="trust-item"><i class="fas fa-map-marker-alt"></i> Presencial en Valdivia</div>
+        <div class="trust-item"><i class="fas fa-shield-alt"></i> Pago seguro Mercado Pago</div>
+        <div class="trust-item"><i class="fas fa-book-open"></i> Material asincrónico incluido</div>
+    </div>
+</div>
+
+<section id="planes">
+    <div class="section-inner">
+        <p class="section-label">Preparación PAES</p>
+        <h2 class="section-title">Elige tu plan de química</h2>
+        <p class="section-sub">Ambos planes incluyen material asincrónico y clases en vivo individuales de 90 min.</p>
+
+        <div class="plans-grid">
+            <div class="plan-card">
+                <div class="plan-name">Plan Quincenal</div>
+                <div class="plan-desc">2 clases al mes · Ritmo flexible</div>
+                <div class="plan-price">$50.000 <span>/ mes</span></div>
+                <hr class="plan-divider">
+                <ul class="plan-features">
+                    <li><i class="fas fa-check-circle"></i><span>Contenido asincrónico: guías PDF, videos y simulaciones interactivas</span></li>
+                    <li><i class="fas fa-check-circle"></i><span>2 clases en vivo de 90 min (1 cada 2 semanas)</span></li>
+                    <li><i class="fas fa-check-circle"></i><span>Duración del plan: 1 Mes</span></li>
+                    <li><i class="fas fa-check-circle"></i><span>Clase 100% individual — atención personalizada</span></li>
+                </ul>
+                <a href="https://wa.me/+56953324625" class="plan-cta plan-cta-default">Reservar cupo →</a>
+                <p class="plan-payments"><i class="fab fa-cc-visa"></i> <i class="fab fa-cc-mastercard"></i> Débito · Pago con Mercado Pago</p>
+            </div>
+
+            <div class="plan-card featured">
+                <div class="plan-badge">⭐ Más elegido</div>
+                <div class="plan-name">Plan Mensual</div>
+                <div class="plan-desc">4 clases al mes · Máxima preparación</div>
+                <div class="plan-price">$100.000 <span>/ mes</span></div>
+                <hr class="plan-divider">
+                <ul class="plan-features">
+                    <li><i class="fas fa-check-circle"></i><span>Contenido asincrónico: guías PDF, videos y simulaciones interactivas</span></li>
+                    <li><i class="fas fa-check-circle"></i><span>4 clases en vivo de 90 min (1 por semana)</span></li>
+                    <li><i class="fas fa-check-circle"></i><span>Duración del plan: 4 semanas</span></li>
+                    <li><i class="fas fa-check-circle"></i><span>Clase 100% individual — atención personalizada</span></li>
+                </ul>
+                <a href="https://wa.me/+56953324625" class="plan-cta plan-cta-featured">Reservar cupo →</a>
+                <p class="plan-payments"><i class="fab fa-cc-visa"></i> <i class="fab fa-cc-mastercard"></i> Débito · Pago con Mercado Pago</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="como-funciona" class="how-bg">
+    <div class="section-inner">
+        <div style="text-align:center;">
+            <p class="section-label" style="color:#93c5fd;">Proceso</p>
+            <h2 class="section-title" style="color:#fff;">Así de simple empezar</h2>
+        </div>
+        <div class="steps">
+            <div class="step">
+                <div class="step-num">1</div>
+                <h3>Escríbeme por WhatsApp</h3>
+                <p>Cuéntame tu nivel, qué necesitas reforzar y qué horarios te acomodan.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <h3>Elegimos tu plan</h3>
+                <p>Te recomiendo el plan que mejor se adapta a tu ritmo y tu objetivo.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <h3>Pago seguro</h3>
+                <p>Recibes un link de pago de Mercado Pago. Rápido y con comprobante.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">4</div>
+                <h3>Primera clase</h3>
+                <p>Agendamos tu primera sesión en vivo y accedes al material de inmediato.</p>
+            </div>
+        </div>
+        <div style="text-align:center; margin-top:48px;">
+            <a href="https://wa.me/+56953324625" class="btn-primary">
+                <i class="fab fa-whatsapp"></i> Comenzar ahora
+            </a>
+        </div>
+    </div>
+</section>
+
+<section id="particulares" style="background: var(--surface);">
+    <div class="section-inner">
+        <p class="section-label">Clases particulares</p>
+        <h2 class="section-title">Apoyo para enseñanza media y universidad</h2>
+        <p class="section-sub">Química, Física y Biología. Online desde cualquier lugar o presencial en Valdivia.</p>
+
+        <div class="particulares-grid">
+            <div class="part-card">
+                <div class="part-icon"><i class="fas fa-laptop"></i></div>
+                <div class="part-title">Clase Online</div>
+                <div class="part-sub">Para todo Chile · Por Zoom</div>
+                <ul class="part-features">
+                    <li><i class="fas fa-graduation-cap"></i><span><strong>Enseñanza Media:</strong> Química, Física y Biología</span></li>
+                    <li><i class="fas fa-microscope"></i><span><strong>Universidad:</strong> Especialidad en Química</span></li>
+                    <li><i class="fas fa-clock"></i><span>Sesiones de 90 minutos</span></li>
+                </ul>
+                <div class="part-price">$30.000 <span>/ sesión</span></div>
+                <a href="https://wa.me/+56953324625" class="part-cta">Reservar clase online →</a>
+            </div>
+            <div class="part-card">
+                <div class="part-icon"><i class="fas fa-map-marker-alt"></i></div>
+                <div class="part-title">Clase Presencial</div>
+                <div class="part-sub">Valdivia · En tu domicilio</div>
+                <ul class="part-features">
+                    <li><i class="fas fa-graduation-cap"></i><span><strong>Enseñanza Media:</strong> Química, Física y Biología</span></li>
+                    <li><i class="fas fa-microscope"></i><span><strong>Universidad:</strong> Especialidad en Química</span></li>
+                    <li><i class="fas fa-clock"></i><span>Sesiones de 90 minutos</span></li>
+                </ul>
+                <div class="part-price">$35.000 <span>/ sesión</span></div>
+                <a href="https://wa.me/+56953324625" class="part-cta">Reservar clase presencial →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="sobre-mi">
+    <div class="section-inner">
+        <div class="about-grid">
+            <div class="about-img-wrap">
+                <img src="images/imagen-presentacion.svg" alt="Profe Ezequiel" class="about-img">
+            </div>
+            <div>
+                <p class="section-label">Sobre mí</p>
+                <h2 class="section-title">Hola, soy Ezequiel</h2>
+                <p class="about-text">Soy profesor de química con años de experiencia ayudando a estudiantes a superar sus desafíos académicos en Valdivia y todo Chile. Mi enfoque se basa en simplificar conceptos complejos y construir una base sólida.</p>
+                <p class="about-text" style="margin-top:12px;">Ya sea para la PAES o para una materia universitaria, me adapto a tu ritmo y tu forma de aprender. Nada de clases genéricas: cada sesión es diseñada para ti.</p>
+                <div class="about-stat-row">
+                    <div class="about-stat">
+                        <div class="about-stat-num">100%</div>
+                        <div class="about-stat-label">Clases individuales</div>
+                    </div>
+                    <div class="about-stat">
+                        <div class="about-stat-num">90'</div>
+                        <div class="about-stat-label">Por sesión en vivo</div>
+                    </div>
+                    <div class="about-stat">
+                        <div class="about-stat-num">+Chile</div>
+                        <div class="about-stat-label">Online para todo el país</div>
                     </div>
                 </div>
-                <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-gray-600 focus:outline-none">
-                        <i class="fas fa-bars text-2xl"></i>
-                    </button>
+                <div class="about-social">
+                    <a href="https://www.instagram.com/profeezequiel_cl?igsh=NWU2bmh0M3V0NG50"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@profeezequiel_cl?_r=1&_t=ZS-9542kXK3Gsu"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://youtube.com/@profeezequiel_cl?si=KogLi15Li8GCYX1z"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
         </div>
-        <!-- Menú Móvil -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t px-4 py-4 space-y-2">
-            <a href="#inicio" class="block py-2 text-gray-600">Inicio</a>
-            <a href="#paes" class="block py-2 text-gray-600">Plan PAES</a>
-            <a href="#particulares" class="block py-2 text-gray-600">Particulares</a>
-            <a href="#sobre-mi" class="block py-2 text-gray-600">Sobre mí</a>
-            <a href="#faq" class="block py-2 text-gray-600">FAQ</a>
-        </div>
-    </nav>
+    </div>
+</section>
 
-    <!-- Sección Hero -->
-    <header id="inicio" class="pt-32 pb-20 gradient-bg text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            
-            <h1 class="text-4xl md:text-6xl font-extrabold mb-6">
-                Prepara la PAES de Química con clases online personalizadas
-            </h1>
-
-            <p class="text-xl mb-10 max-w-2xl mx-auto opacity-90">
-                Preparación especializada para PAES Química y apoyo académico personalizado para enseñanza media y universitaria
-                ¡Tu éxito en ciencias comienza aquí!
-            </p>
-
-            <div class="flex flex-col sm:flex-row justify-center gap-4 mb-10">
-                <a href="#paes" class="bg-white text-blue-700 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition inline-block">
-                    Ver Planes PAES
-                </a>
-
-                <a href="#paes" class="bg-white text-blue-600 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition inline-block">
-                    Clases Particulares
-                </a>
+<section id="faq" style="background: var(--surface);">
+    <div class="section-inner">
+        <p class="section-label">Preguntas frecuentes</p>
+        <h2 class="section-title">Todo lo que necesitas saber</h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <button class="faq-btn"><span class="faq-question">¿Cuál es la diferencia entre el Plan Mensual y el Quincenal?</span><i class="fas fa-plus faq-icon"></i></button>
+                <div class="faq-answer">El Plan Mensual incluye 4 clases al mes (una por semana) por $100.000 — ideal para una preparación intensa y constante. El Plan Quincenal tiene 2 clases al mes por $50.000, perfecto si quieres un ritmo más flexible. Ambos incluyen material asincrónico y son 100% individuales.</div>
             </div>
-
-            <!-- Redes sociales dentro del hero -->
-            <div class="flex justify-center space-x-6">
-                <a href="https://www.instagram.com/profeezequiel_cl?igsh=NWU2bmh0M3V0NG50" class="text-3xl text-white hover:scale-125 transition transform">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://www.tiktok.com/@profeezequiel_cl?_r=1&_t=ZS-9542kXK3Gsu" class="text-3xl text-white hover:scale-125 transition transform">
-                    <i class="fab fa-tiktok"></i>
-                </a>
-                <a href="https://youtube.com/@profeezequiel_cl?si=KogLi15Li8GCYX1z" class="text-3xl text-white hover:scale-125 transition transform">
-                    <i class="fab fa-youtube"></i>
-                </a>
+            <div class="faq-item">
+                <button class="faq-btn"><span class="faq-question">¿Cómo son las clases en vivo?</span><i class="fas fa-plus faq-icon"></i></button>
+                <div class="faq-answer">Son por Zoom, de 90 minutos y 100% individuales. Al ser solo tú y el profe, podemos ir exactamente al ritmo que necesitas, pausar, preguntar y revisar los temas que más se te complican.</div>
             </div>
-
-        </div>
-    </header>
-
-    <!-- Planes PAES -->
-    <section id="paes" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Plan PAES Química</h2>
-                <p class="mt-4 text-lg text-gray-600">Módulos especializados con acompañamiento continuo.</p>
+            <div class="faq-item">
+                <button class="faq-btn"><span class="faq-question">¿Qué incluye el material asincrónico?</span><i class="fas fa-plus faq-icon"></i></button>
+                <div class="faq-answer">Accedes a una biblioteca digital con guías de ejercicios paso a paso, resúmenes teóricos y cápsulas en video enfocadas en los contenidos que más aparecen en la PAES de Química. Puedes usarlo cuando quieras, a tu ritmo.</div>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                
-                <div class="glass-card border-2 border-blue-500 rounded-3xl p-8 shadow-xl relative overflow-hidden flex flex-col justify-between">
-                    <div>
-                        <div class="absolute top-0 right-0 bg-blue-500 text-white px-6 py-1 rounded-bl-2xl font-semibold">Módulo 1</div>
-                        <h3 class="text-2xl font-bold mt-4 mb-4 text-gray-900">Átomos y Enlace Químico</h3>
-                        <div class="text-4xl font-bold text-blue-700 mb-6">$100.000</div>
-                        
-                        <ul class="space-y-4 mb-8 list-none p-0 text-left">
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
-                                <span class="text-gray-700">Acceso a <strong>contenido asincrónico</strong> (Guías - Videos - Simulaciones Interactivas).</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
-                                <span class="text-gray-700"><strong>1 Clase online semanal de 90 minutos</strong> en vivo.</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
-                                <span class="text-gray-700"><strong>Duración 4 semanas</strong></span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
-                                <span class="text-gray-700">Grupos de máximo <strong>3 estudiantes</strong></span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="flex justify-center mb-6">
-                        <span class="inline-flex items-center bg-green-100 text-green-700 text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-widest border border-green-200 shadow-sm">
-                            <span class="relative flex h-2 w-2 mr-2">
-                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                                <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                            </span>
-                            Matrícula Abierta
-                        </span>
-                    </div>                   
-                    
-                    <div>
-                        <div class="mt-8 mb-4 border-t border-gray-100 pt-6 text-center">
-                            <p class="text-[11px] text-gray-500 uppercase font-bold mb-4 tracking-widest">
-                                Paga seguro con <span class="text-blue-500">Mercado Pago</span>
-                            </p>
-                            <div class="flex justify-center items-center gap-3">
-                                <i class="fab fa-cc-visa text-2xl text-[#1A1F71]"></i>
-                                <i class="fab fa-cc-mastercard text-2xl text-[#EB001B]"></i>
-                                <div class="flex items-center gap-1 bg-gray-100 px-2 py-1 rounded text-gray-700 border border-gray-200">
-                                    <span class="text-[9px] font-bold uppercase">Débito</span>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="https://wa.me/+56953324625" class="block text-center bg-blue-600 text-white py-4 rounded-xl font-bold hover:bg-blue-700 transition">Reservar Cupo</a>
-                    </div>
-                </div>
-
-                <div class="glass-card border-2 border-blue-500 rounded-3xl p-8 shadow-xl relative overflow-hidden flex flex-col justify-between">
-                    <div>
-                        <div class="absolute top-0 right-0 bg-blue-500 text-white px-6 py-1 rounded-bl-2xl font-semibold">Módulo 2</div>
-                        <h3 class="text-2xl font-bold mt-4 mb-4 text-gray-900">Química Orgánica</h3>
-                        <div class="text-4xl font-bold text-blue-700 mb-6">$100.000</div>
-                        
-                        <ul class="space-y-4 mb-8 list-none p-0 text-left">
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
-                                <span class="text-gray-700">Acceso a <strong>contenido asincrónico</strong> (Guías - Videos - Simulaciones Interactivas).</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
-                                <span class="text-gray-700"><strong>1 Clase online semanal de 90 minutos</strong> en vivo.</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
-                                <span class="text-gray-700"><strong>Duración 4 semanas</strong></span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
-                                <span class="text-gray-700">Grupos de máximo <strong>3 estudiantes</strong></span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="flex justify-center mb-6">
-                        <span class="inline-flex items-center bg-green-100 text-green-700 text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-widest border border-green-200 shadow-sm">
-                            <span class="relative flex h-2 w-2 mr-2">
-                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                                <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                            </span>
-                            Matrícula Abierta
-                        </span>
-                    </div>                    
-
-                    <div>
-                        <div class="mt-8 mb-4 border-t border-gray-100 pt-6 text-center">
-                            <p class="text-[11px] text-gray-500 uppercase font-bold mb-4 tracking-widest">
-                                Paga seguro con <span class="text-blue-500">Mercado Pago</span>
-                            </p>
-                            <div class="flex justify-center items-center gap-3">
-                                <i class="fab fa-cc-visa text-2xl text-[#1A1F71]"></i>
-                                <i class="fab fa-cc-mastercard text-2xl text-[#EB001B]"></i>
-                                <div class="flex items-center gap-1 bg-gray-100 px-2 py-1 rounded text-gray-700 border border-gray-200">
-                                    <span class="text-[9px] font-bold uppercase">Débito</span>
-                        </div>
-                            </div>
-                        </div>
-                        <a href="https://wa.me/+56953324625" class="block text-center bg-blue-600 text-white py-4 rounded-xl font-bold hover:bg-blue-700 transition">Reservar Cupo</a>
-                    </div>
-                </div>
-
-                <div class="glass-card border-2 border-blue-500 rounded-3xl p-8 shadow-xl relative overflow-hidden flex flex-col justify-between">
-                    <div>
-                        <div class="absolute top-0 right-0 bg-blue-500 text-white px-6 py-1 rounded-bl-2xl font-semibold">Módulo 3</div>
-                        <h3 class="text-2xl font-bold mto-4 mb-4 text-gray-900">Reacciones y Estequiometría</h3>
-                        <div class="text-4xl font-bold text-blue-700 mb-6">$100.000</div>
-                        
-                        <ul class="space-y-4 mb-8 list-none p-0 text-left">
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
-                                <span class="text-gray-700">Acceso a <strong>contenido asincrónico</strong> (Guías - Videos - Simulaciones Interactivas).</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
-                                <span class="text-gray-700"><strong>1 Clase online semanal de 90 minutos</strong> en vivo.</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
-                                <span class="text-gray-700"><strong>Duración 4 semanas</strong></span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
-                                <span class="text-gray-700">Grupos de máximo <strong>3 estudiantes</strong></span>
-                            </li>                            
-                        </ul>
-                    </div>
-
-                    <div class="flex justify-center mb-6">
-                        <span class="inline-flex items-center bg-green-100 text-green-700 text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-widest border border-green-200 shadow-sm">
-                            <span class="relative flex h-2 w-2 mr-2">
-                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                                <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                            </span>
-                            Matrícula Abierta
-                        </span>
-                    </div>
-
-                    <div>
-                        <div class="mt-8 mb-4 border-t border-gray-100 pt-6 text-center">
-                            <p class="text-[11px] text-gray-500 uppercase font-bold mb-4 tracking-widest">
-                                Paga seguro con <span class="text-blue-500">Mercado Pago</span>
-                            </p>
-                            <div class="flex justify-center items-center gap-3">
-                                <i class="fab fa-cc-visa text-2xl text-[#1A1F71]"></i>
-                                <i class="fab fa-cc-mastercard text-2xl text-[#EB001B]"></i>
-                                <div class="flex items-center gap-1 bg-gray-100 px-2 py-1 rounded text-gray-700 border border-gray-200">
-                                    <span class="text-[9px] font-bold uppercase">Débito</span>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="https://wa.me/+56953324625" class="block text-center bg-blue-600 text-white py-4 rounded-xl font-bold hover:bg-blue-700 transition">Reservar Cupo</a>
-                    </div>
-                </div>
-
+            <div class="faq-item">
+                <button class="faq-btn"><span class="faq-question">¿Dónde se realizan las clases presenciales?</span><i class="fas fa-plus faq-icon"></i></button>
+                <div class="faq-answer">Las clases presenciales se realizan en Valdivia, en el domicilio del estudiante. El valor es de $35.000 por sesión de 90 minutos y se puede pagar al finalizar con cualquier medio de pago (incluye terminal POS).</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-btn"><span class="faq-question">¿Cuáles son los medios de pago disponibles?</span><i class="fas fa-plus faq-icon"></i></button>
+                <div class="faq-answer">Para clases online y planes PAES se envía un link de pago seguro de Mercado Pago (crédito, débito o transferencia). Para clases presenciales en Valdivia también se acepta pago con terminal POS al finalizar la sesión.</div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Clases Particulares -->
-    <section id="particulares" class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Clases Particulares</h2>
-                <p class="mt-4 text-lg text-gray-600">Acompañamiento personalizado para nivel escolar y universitario.</p>
-            </div>
+<div class="cta-section">
+    <div class="cta-inner">
+        <h2>¿Listo para subir tu puntaje?</h2>
+        <p>Escríbeme hoy y coordinamos tu primera clase. Los cupos son limitados para garantizar atención de calidad.</p>
+        <a href="https://wa.me/+56953324625" class="btn-primary" style="display:inline-flex; font-size:17px; padding:18px 40px;">
+            <i class="fab fa-whatsapp"></i> Escribir a Ezequiel ahora
+        </a>
+    </div>
+</div>
 
-            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                
-                <div class="bg-white p-8 rounded-3xl shadow-xl border-2 border-blue-400 flex flex-col justify-between h-full">
-                    <div>
-                        <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 mx-auto">
-                            <i class="fas fa-laptop text-blue-600 text-2xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4 text-gray-900 text-center">Clase Online</h3>
-                        <p class="text-gray-600 mb-6 text-center text-sm">Aprende desde cualquier lugar</p>
-                        
-                        <ul class="space-y-4 mb-8 text-sm border-t border-gray-100 pt-6">
-                            <li class="flex items-center text-gray-700">
-                                <i class="fas fa-graduation-cap text-blue-500 mr-3 w-5 text-center"></i>
-                                <span><strong>Enseñanza Media:</strong> Química, Física y Biología</span>
-                            </li>
-                            <li class="flex items-center text-gray-700">
-                                <i class="fas fa-microscope text-blue-500 mr-3 w-5 text-center"></i>
-                                <span><strong>Universidad:</strong> Especialidad en Química</span>
-                            </li>
-                        </ul>
-
-                        <div class="text-3xl font-bold text-blue-700 mb-8 text-center">$30.000 <span class="text-base font-normal text-gray-500">/ sesión</span></div>
-                    </div>
-
-                    <div>
-                        <div class="mt-auto border-t border-gray-100 pt-6 mb-6">
-                            <p class="text-[11px] text-gray-500 uppercase font-bold mb-4 tracking-widest text-center">
-                                Paga seguro con <span class="text-blue-500">Mercado Pago</span>
-                            </p>
-                            <div class="flex flex-wrap justify-center items-center gap-4">
-                                <i class="fab fa-cc-visa text-2xl text-[#1A1F71]"></i>
-                                <i class="fab fa-cc-mastercard text-2xl text-[#EB001B]"></i>
-                                <div class="flex items-center gap-1 bg-gray-100 px-2 py-1 rounded text-gray-700 border border-gray-200">
-                                    <span class="text-[9px] font-bold uppercase">Débito</span>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="https://wa.me/+56953324625" class="block text-center bg-blue-600 text-white py-4 rounded-xl font-bold hover:bg-blue-700 transition shadow-lg">Reservar Clase Online</a>
-                    </div>
-                </div>
-
-                <div class="bg-white p-8 rounded-3xl shadow-xl border-2 border-blue-400 flex flex-col justify-between h-full">
-                    <div>
-                        <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 mx-auto">
-                            <i class="fas fa-map-marker-alt text-blue-600 text-2xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4 text-gray-900 text-center">Clase Presencial</h3>
-                        <p class="text-gray-600 mb-6 text-center text-sm">En Valdivia. Ideal para estudiantes que prefieren la cercanía del tutor.</p>
-                        
-                        <ul class="space-y-4 mb-8 text-sm border-t border-gray-100 pt-6">
-                            <li class="flex items-center text-gray-700">
-                                <i class="fas fa-graduation-cap text-blue-500 mr-3 w-5 text-center"></i>
-                                <span><strong>Enseñanza Media:</strong> Química, Física y Biología</span>
-                            </li>
-                            <li class="flex items-center text-gray-700">
-                                <i class="fas fa-microscope text-blue-500 mr-3 w-5 text-center"></i>
-                                <span><strong>Universidad:</strong> Especialidad en Química</span>
-                            </li>
-                        </ul>
-
-                        <div class="text-3xl font-bold text-blue-700 mb-8 text-center">$35.000 <span class="text-base font-normal text-gray-500">/ sesión</span></div>
-                    </div>
-
-                    <div>
-                        <div class="mt-auto border-t border-gray-100 pt-6 mb-6">
-                            <p class="text-[11px] text-gray-500 uppercase font-bold mb-4 tracking-widest text-center">
-                                Paga seguro con <span class="text-blue-500">Mercado Pago</span>
-                            </p>
-                            <div class="flex flex-wrap justify-center items-center gap-4">
-                                <i class="fab fa-cc-visa text-2xl text-[#1A1F71]"></i>
-                                <i class="fab fa-cc-mastercard text-2xl text-[#EB001B]"></i>
-                                <div class="flex items-center gap-1 bg-gray-100 px-2 py-1 rounded text-gray-700 border border-gray-200">
-                                    <span class="text-[9px] font-bold uppercase">Débito</span>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="https://wa.me/+56953324625" class="block text-center bg-blue-600 text-white py-4 rounded-xl font-bold hover:bg-blue-700 transition shadow-lg">Reservar Clase Presencial</a>
-                    </div>
-                </div>
-
-            </div>
+<footer>
+    <div class="footer-inner">
+        <div class="footer-logo">Profe<span>Ezequiel</span></div>
+        <div class="footer-links">
+            <a href="https://www.instagram.com/profeezequiel_cl?igsh=NWU2bmh0M3V0NG50"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="https://www.tiktok.com/@profeezequiel_cl?_r=1&_t=ZS-9542kXK3Gsu"><i class="fab fa-tiktok"></i> TikTok</a>
+            <a href="https://youtube.com/@profeezequiel_cl?si=KogLi15Li8GCYX1z"><i class="fab fa-youtube"></i> YouTube</a>
         </div>
-    </section>
+        <div class="footer-copy">© 2026 ProfeEzequiel — Valdivia, Chile. Clases de Química online y presencial.</div>
+    </div>
+</footer>
 
+<a href="https://wa.me/+56953324625" target="_blank" class="wa-float"><i class="fab fa-whatsapp"></i></a>
 
-    </section>
+<script>
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => {
+        const open = mobileMenu.style.display === 'block';
+        mobileMenu.style.display = open ? 'none' : 'block';
+        menuBtn.innerHTML = open ? '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>';
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        mobileMenu.style.display = 'none';
+        menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+    }));
 
-    <!-- Sobre Mí -->
-    <section id="sobre-mi" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row items-center gap-12">
-                <div class="w-full md:w-1/2  flex justify-center">
-                    <div class="relative w-72">
-                        <div class="absolute -top-4 -left-4 w-full h-full border-4 border-blue-500 rounded-2xl"></div>
-                        <img src="images/imagen-presentacion.svg" alt="Profe Ezequiel" class="rounded-2xl shadow-2xl relative z-10 w-full object-cover aspect-square">
-                    </div>
-                </div>
-                <div class="w-full md:w-1/2">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900 text-center">Hola, soy Ezequiel</h2>
-                    <p class="text-lg text-gray-600 mb-6 text-justify">
-                        Soy profesor en química con años de experiencia ayudando a estudiantes a superar sus desafíos académicos en Valdivia y todo Chile. Mi enfoque se basa en simplificar conceptos complejos y construir una base sólida.
-                    </p>
-                    <p class="text-lg text-gray-600 mb-8 text-justify">
-                        Ya sea que estés preparándote para la PAES o necesites ayuda en una asignatura de ciencias en particular, estoy aquí para guiarte con una metodología personalizada.
-                    </p>
-                    <div class="flex space-x-6 justify-center">
-                        <a href="https://www.instagram.com/profeezequiel_cl?igsh=NWU2bmh0M3V0NG50" class="text-3xl text-pink-600 hover:scale-110 transition"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.tiktok.com/@profeezequiel_cl?_r=1&_t=ZS-9542kXK3Gsu" class="text-3xl text-black hover:scale-110 transition"><i class="fab fa-tiktok"></i></a>
-                        <a href="https://youtube.com/@profeezequiel_cl?si=KogLi15Li8GCYX1z" class="text-3xl text-red-600 hover:scale-110 transition"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección de Preguntas Frecuentes (Tailwind + Alpine.js) -->
-    <section id="faq" class="py-20 bg-gray-50">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">Preguntas Frecuentes</h2>
-            
-            <div class="space-y-4" x-data="{ active: null }">
-                
-                <div class="bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100">
-                    <button 
-                        @click="active = (active === 1 ? null : 1)" 
-                        class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none transition-colors"
-                        :class="active === 1 ? 'bg-blue-50' : ''"
-                    >
-                        <span class="font-bold text-lg" :class="active === 1 ? 'text-blue-700' : 'text-gray-800'">¿Cómo funcionan las clases de PAES?</span>
-                        <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300" :class="active === 1 ? 'rotate-180' : ''"></i>
-                    </button>
-                    <div 
-                        x-show="active === 1" 
-                        x-collapse 
-                        class="px-6 py-4 text-gray-600 leading-relaxed border-t border-gray-50"
-                    >
-                        Cada semana tenemos una sesión en vivo de máximo 3 personas para asegurar la participación. Además, tendrás acceso a una plataforma con guías en PDF y videos grabados para repasar a tu ritmo los contenidos del plan común y electivo.
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100">
-                    <button 
-                        @click="active = (active === 2 ? null : 2)" 
-                        class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none transition-colors"
-                        :class="active === 2 ? 'bg-blue-50' : ''"
-                    >
-                        <span class="font-bold text-lg" :class="active === 2 ? 'text-blue-700' : 'text-gray-800'">¿Qué incluye el material asincrónico?</span>
-                        <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300" :class="active === 2 ? 'rotate-180' : ''"></i>
-                    </button>
-                    <div 
-                        x-show="active === 2" 
-                        x-collapse 
-                        class="px-6 py-4 text-gray-600 leading-relaxed border-t border-gray-50"
-                    >
-                        Tendrás una biblioteca digital con guías de ejercicios paso a paso, resúmenes teóricos clave y cápsulas en video enfocadas en los temas que más aparecen en la PAES de Química.
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100">
-                    <button 
-                        @click="active = (active === 3 ? null : 3)" 
-                        class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none transition-colors"
-                        :class="active === 3 ? 'bg-blue-50' : ''"
-                    >
-                        <span class="font-bold text-lg" :class="active === 3 ? 'text-blue-700' : 'text-gray-800'">¿Dónde se realizan las clases presenciales?</span>
-                        <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300" :class="active === 3 ? 'rotate-180' : ''"></i>
-                    </button>
-                    <div 
-                        x-show="active === 3" 
-                        x-collapse 
-                        class="px-6 py-4 text-gray-600 leading-relaxed border-t border-gray-50"
-                    >
-                        Las clases presenciales se realizan en la ciudad de Valdivia, en el domicilio del estudiante. El valor es de $35.000 por sesión de 90 minutos.
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100">
-                    <button 
-                        @click="active = (active === 4 ? null : 4)" 
-                        class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none transition-colors"
-                        :class="active === 4 ? 'bg-blue-50' : ''"
-                    >
-                        <span class="font-bold text-lg" :class="active === 4 ? 'text-blue-700' : 'text-gray-800'">¿Cuáles son los medios de pago disponibles?</span>
-                        <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300" :class="active === 4 ? 'rotate-180' : ''"></i>
-                    </button>
-                    <div 
-                        x-show="active === 4" 
-                        x-collapse 
-                        class="px-6 py-4 text-gray-600 leading-relaxed border-t border-gray-50"
-                    >
-                        <p class="mb-3">Para tu comodidad, aceptamos <strong>tarjetas de crédito, débito y transferencias</strong> a través de las siguientes modalidades:</p>
-                        <ul class="list-disc ml-5 space-y-2 text-gray-600">
-                            <li><strong>Clases Online y Planes:</strong> Se envían mediante un <strong>Link de Pago seguro</strong> de Mercado Pago.</li>
-                            <li><strong>Clases Presenciales:</strong> Puedes pagar directamente al finalizar la sesión con <strong>todo medio de pago</strong>, ya que cuento con terminal de pago móvil (Point) para procesar tu tarjeta en el lugar.</li>
-                        </ul>
-                        <p class="mt-3 text-sm italic text-blue-600 font-medium">
-                            <i class="fas fa-shield-alt mr-1"></i> Todos los pagos son procesados de forma segura y recibes tu comprobante al instante.
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Pie de Página -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="text-2xl font-bold mb-6">Profe<span class="text-blue-400">Ezequiel</span></div>
-            <div class="flex justify-center space-x-8 mb-8">
-                <a href="https://www.instagram.com/profeezequiel_cl?igsh=NWU2bmh0M3V0NG50" class="text-white hover:text-blue-400 transition"><i class="fab fa-instagram mr-2"></i>Instagram</a>
-                <a href="https://www.tiktok.com/@profeezequiel_cl?_r=1&_t=ZS-9542kXK3Gsu" class="text-white hover:text-blue-400 transition"><i class="fab fa-tiktok mr-2"></i>TikTok</a>
-                <a href="https://youtube.com/@profeezequiel_cl?si=KogLi15Li8GCYX1z" class="text-white hover:text-blue-400 transition"><i class="fab fa-youtube mr-2"></i>YouTube</a>
-            </div>
-            <p class="text-gray-500">© 2026 ProfeEzequiel - Valdivia, Chile. Clases de Química.</p>
-        </div>
-    </footer>
-
-    <!-- Botón de WhatsApp -->
-    <a href="https://wa.me/+56953324625" target="_blank" class="whatsapp-float">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <script>
-        // Lógica del Menú Móvil
-        const menuBtn = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+            const id = a.getAttribute('href');
+            if (id === '#') return;
+            const el = document.querySelector(id);
+            if (el) { e.preventDefault(); window.scrollTo({ top: el.offsetTop - 70, behavior: 'smooth' }); }
         });
+    });
 
-        const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
+    document.querySelectorAll('.faq-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const item = btn.parentElement;
+            const wasOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+            if (!wasOpen) item.classList.add('open');
         });
-
-        // Desplazamiento Suave
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                e.preventDefault();
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 70,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
+    });
+</script>
 
 </body>
 </html>
