@@ -59,6 +59,9 @@
         .btn-primary:hover { background: #ea6c0a; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(249,115,22,.4); color: #fff; }
         .btn-secondary { background: rgba(255,255,255,0.12); border: 1.5px solid rgba(255,255,255,0.3); color: #fff; padding: 15px 28px; border-radius: 10px; font-size: 16px; font-weight: 600; text-decoration: none; transition: all .2s; display: inline-flex; align-items: center; gap: 8px; }
         .btn-secondary:hover { background: rgba(255,255,255,0.2); color: #fff; }
+        .btn-intensivo { background: #fff; color: var(--blue-deep); padding: 16px 32px; border-radius: 10px; font-size: 17px; font-weight: 800; text-decoration: none; transition: all .2s; display: inline-flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 16px; box-shadow: 0 8px 24px rgba(0,0,0,.2); }
+        .btn-intensivo i { color: var(--accent); }
+        .btn-intensivo:hover { background: var(--blue-light); transform: translateY(-2px); color: var(--blue-deep); }
         .social-row { display: flex; align-items: center; justify-content: center; gap: 20px; }
         .social-row a { color: rgba(255,255,255,0.7); font-size: 22px; text-decoration: none; transition: color .2s, transform .2s; }
         .social-row a:hover { color: #fff; transform: scale(1.15); }
@@ -104,6 +107,11 @@
         .plan-cta-featured:hover { background: #ea6c0a; box-shadow: 0 6px 20px rgba(249,115,22,.4); color: #fff; }
         .plan-payments { text-align: center; margin-top: 14px; font-size: 11px; color: var(--muted); }
         .plan-card.featured .plan-payments { color: rgba(255,255,255,.45); }
+        .intensivo-card { grid-column: 1 / -1; border-color: var(--accent); scroll-margin-top: 96px; }
+        .intensivo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px; }
+        .intensivo-card h4 { font-size: 15px; font-weight: 700; margin-bottom: 14px; }
+        .intensivo-card h4 i { color: var(--blue-bright); margin-right: 6px; }
+        .intensivo-card .plan-cta { width: 100%; max-width: 380px; margin-left: auto; margin-right: auto; }
 
         /* HOW IT WORKS */
         .how-bg { background: var(--blue-deep); }
@@ -224,6 +232,7 @@
         </div>
         <h1>Domina la química.<br><em>Sube tu puntaje PAES.</em></h1>
         <p>Clases online. Material exclusivo, metodología probada y acompañamiento real desde Valdivia para todo Chile.</p>
+        <a href="#intensivo" class="btn-intensivo"><i class="fas fa-flask"></i> Preinscríbete al Intensivo de Química</a>
         <div class="hero-btns">
             <a href="#planes" class="btn-primary"><i class="fas fa-rocket"></i> Ver planes PAES</a>
             <a href="#particulares" class="btn-secondary"><i class="fas fa-rocket"></i> Clases particulares</a>
@@ -252,6 +261,40 @@
         <p class="section-sub">Ambos planes incluyen guías y simulaciones. Elige uno o combina para cubrir más módulos.</p>
 
         <div class="plans-grid">
+
+            <div class="plan-card intensivo-card" id="intensivo">
+                <div class="plan-badge">Preinscripción abierta</div>
+                <div class="plan-name">Intensivo de Química PAES</div>
+                <div class="plan-desc">Prepárate para la PAES de Química resolviendo con seguridad los ejercicios que más se repiten en la prueba.</div>
+                <div class="plan-price">$50.000 <span>/ intensivo completo</span></div>
+                <hr class="plan-divider">
+                <div class="intensivo-grid">
+                    <div>
+                        <h4><i class="fas fa-layer-group"></i>El intensivo funciona en dos etapas</h4>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check-circle"></i><span><strong>6 clases en video</strong> que deberás ver antes de cada sesión. En ellas se explica la teoría y los conceptos clave de cada eje. Las ves a tu ritmo: pausar y repetir las veces que necesites.</span></li>
+                            <li><i class="fas fa-check-circle"></i><span><strong>6 clases grupales de ejercitación</strong>, de 90 minutos cada una, donde dedicamos todo el tiempo a resolver juntos ejercicios tipo PAES, revisar los errores más frecuentes y aplicar estrategias para el día de la prueba.</span></li>
+                        </ul>
+                        <h4 style="margin-top:24px;"><i class="fas fa-calendar-alt"></i>Horario (del 16 al 21 de noviembre)</h4>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check-circle"></i><span>Lunes a viernes: 19:30 a 21:00 hrs</span></li>
+                            <li><i class="fas fa-check-circle"></i><span>Sábado: 9:00 a 10:30 hrs</span></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4><i class="fas fa-list-ul"></i>Programa por sesión</h4>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check-circle"></i><span><strong>Lunes 16:</strong> Leyes ponderales y balance de ecuaciones químicas</span></li>
+                            <li><i class="fas fa-check-circle"></i><span><strong>Martes 17:</strong> Estequiometría (mol, masa molar, reactivo limitante y en exceso)</span></li>
+                            <li><i class="fas fa-check-circle"></i><span><strong>Miércoles 18:</strong> Composición porcentual, fórmula empírica y molecular</span></li>
+                            <li><i class="fas fa-check-circle"></i><span><strong>Jueves 19:</strong> Soluciones y unidades de concentración (diluciones y solubilidad)</span></li>
+                            <li><i class="fas fa-check-circle"></i><span><strong>Viernes 20:</strong> El átomo de carbono y representación de moléculas orgánicas</span></li>
+                            <li><i class="fas fa-check-circle"></i><span><strong>Sábado 21:</strong> Compuestos orgánicos: hidrocarburos, grupos funcionales y nomenclatura</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScGkinGvEE8NzM4weMV1nds_rjNf5ofHcpeE_2TL6H6SzNu9w/viewform?usp=dialog" class="plan-cta plan-cta-featured">Preinscribirme →</a>
+            </div>
 
             <div class="plan-card featured">
                 <div class="plan-name">Plan Grupal</div>
@@ -497,7 +540,7 @@
             const id = a.getAttribute('href');
             if (id === '#') return;
             const el = document.querySelector(id);
-            if (el) { e.preventDefault(); window.scrollTo({ top: el.offsetTop - 70, behavior: 'smooth' }); }
+            if (el) { e.preventDefault(); window.scrollTo({ top: el.offsetTop - (parseInt(getComputedStyle(el).scrollMarginTop) || 70), behavior: 'smooth' }); }
         });
     });
 
