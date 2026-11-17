@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Intensivo de Química PAES – Aula | ProfeEzequiel</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YH2W9DKBYK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-YH2W9DKBYK');
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --blue-deep: #0f2d6b;
+            --blue-mid: #1a4db8;
+            --blue-bright: #2c6cf5;
+            --blue-light: #e8f0fe;
+            --accent: #f97316;
+            --green: #16a34a;
+            --text: #0f172a;
+            --muted: #64748b;
+            --border: #e2e8f0;
+            --surface: #f8fafc;
+        }
+
+        body { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--text); background: #fff; -webkit-font-smoothing: antialiased; }
+
+        /* NAV */
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+        .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+        .logo { font-size: 20px; font-weight: 800; color: var(--blue-deep); letter-spacing: -0.5px; }
+        .logo span { color: var(--blue-bright); }
+        .nav-links a { font-size: 14px; font-weight: 500; color: var(--muted); text-decoration: none; margin-left: 28px; transition: color .2s; }
+        .nav-links a:hover { color: var(--blue-bright); }
+        .nav-cta { background: var(--blue-bright); color: #fff; padding: 9px 20px; border-radius: 8px; font-size: 14px; font-weight: 700; text-decoration: none; margin-left: 20px; transition: background .2s, transform .1s; white-space: nowrap; }
+        .nav-cta:hover { background: var(--blue-mid); transform: translateY(-1px); }
+
+        /* HERO */
+        .hero { padding: 140px 24px 70px; background: linear-gradient(160deg, #0a1f52 0%, #1a4db8 55%, #2563eb 100%); position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+        .hero-inner { max-width: 760px; margin: 0 auto; text-align: center; position: relative; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 13px; font-weight: 600; padding: 6px 16px; border-radius: 100px; margin-bottom: 28px; }
+        .hero-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 0 3px rgba(74,222,128,0.3); animation: pulse 2s infinite; }
+        @keyframes pulse { 0%,100%{box-shadow:0 0 0 3px rgba(74,222,128,.3)} 50%{box-shadow:0 0 0 6px rgba(74,222,128,.1)} }
+        .hero h1 { font-size: clamp(30px, 5vw, 50px); font-weight: 800; line-height: 1.1; color: #fff; letter-spacing: -1.5px; margin-bottom: 18px; }
+        .hero h1 em { font-style: normal; color: #93c5fd; }
+        .hero p { font-size: 18px; color: rgba(255,255,255,0.82); line-height: 1.65; max-width: 580px; margin: 0 auto; }
+
+        /* TRUST BAR */
+        .trust-bar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 20px 24px; }
+        .trust-bar-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 36px; flex-wrap: wrap; }
+        .trust-item { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; color: var(--text); }
+        .trust-item i { color: var(--blue-bright); font-size: 15px; }
+
+        /* SECTIONS */
+        section { padding: 70px 24px; }
+        .section-inner { max-width: 1100px; margin: 0 auto; }
+        .section-label { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--blue-bright); margin-bottom: 12px; }
+        .section-title { font-size: clamp(26px, 3.5vw, 40px); font-weight: 800; letter-spacing: -0.8px; color: var(--text); line-height: 1.15; }
+        .section-sub { font-size: 17px; color: var(--muted); line-height: 1.65; margin-top: 12px; max-width: 560px; }
+
+        /* CLASES GRID */
+        .clases-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 24px; margin-top: 48px; }
+        .clase-card { border: 1.5px solid var(--border); border-radius: 20px; padding: 28px 26px; background: #fff; display: flex; flex-direction: column; transition: border-color .2s, transform .2s, box-shadow .2s; }
+        .clase-card:hover { border-color: var(--blue-bright); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(44,108,245,.1); }
+        .clase-head { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 22px; }
+        .clase-num { flex-shrink: 0; width: 46px; height: 46px; border-radius: 12px; background: var(--blue-deep); color: #fff; font-size: 18px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+        .clase-tag { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--blue-bright); margin-bottom: 4px; }
+        .clase-title { font-size: 16px; font-weight: 700; line-height: 1.3; color: var(--text); }
+        .resource-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+        .resource-link { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border: 1px solid var(--border); border-radius: 12px; text-decoration: none; color: var(--text); font-size: 14px; font-weight: 600; transition: all .18s; background: #fff; }
+        .resource-link:hover { border-color: var(--blue-bright); background: var(--surface); transform: translateX(3px); }
+        .resource-link .r-icon { flex-shrink: 0; width: 34px; height: 34px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 15px; color: #fff; }
+        .resource-link .r-text { flex: 1; line-height: 1.3; }
+        .resource-link .r-arrow { color: var(--muted); font-size: 12px; transition: transform .18s, color .18s; }
+        .resource-link:hover .r-arrow { color: var(--blue-bright); transform: translateX(2px); }
+        .r-icon.youtube { background: #ff0000; }
+        .r-icon.drive { background: #1a73e8; }
+        .r-icon.live { background: var(--accent); }
+        .r-icon.rec { background: #7c3aed; }
+        .r-icon.extra { background: var(--green); }
+        /* Enlace aún sin configurar */
+        .resource-link[href="#"] { opacity: .55; cursor: default; }
+        .resource-link[href="#"]:hover { transform: none; border-color: var(--border); background: #fff; }
+        .resource-link[href="#"] .r-text::after { content: ' (próximamente)'; font-size: 11px; font-weight: 500; color: var(--muted); }
+
+        /* FOOTER */
+        footer { background: #050f24; padding: 48px 24px 32px; }
+        .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center; }
+        .footer-logo { font-size: 22px; font-weight: 800; color: #fff; }
+        .footer-logo span { color: #60a5fa; }
+        .footer-links { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; }
+        .footer-links a { color: rgba(255,255,255,.5); text-decoration: none; font-size: 14px; transition: color .2s; }
+        .footer-links a:hover { color: #fff; }
+        .footer-copy { font-size: 13px; color: rgba(255,255,255,.35); }
+
+        /* WHATSAPP */
+        .wa-float { position: fixed; bottom: 28px; right: 28px; z-index: 200; width: 58px; height: 58px; border-radius: 50%; background: #25d366; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 28px; text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,.5); transition: transform .2s, box-shadow .2s; }
+        .wa-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,.65); color: #fff; }
+
+        /* MOBILE */
+        .mobile-menu-btn { display: none; background: none; border: none; font-size: 22px; cursor: pointer; color: var(--text); }
+        #mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; background: #fff; border-bottom: 1px solid var(--border); padding: 12px 24px 20px; z-index: 99; }
+        #mobile-menu a { display: block; padding: 12px 0; font-size: 15px; font-weight: 600; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); }
+        #mobile-menu .m-cta { background: var(--blue-bright); color: #fff; text-align: center; border-radius: 8px; margin-top: 12px; border: none; }
+
+        @media (max-width: 768px) {
+            .nav-links, .nav-cta { display: none; }
+            .mobile-menu-btn { display: block; }
+            .hero { padding: 110px 24px 55px; }
+            .clases-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="logo" style="text-decoration:none;">Profe<span>Ezequiel</span></a>
+        <div class="nav-links">
+            <a href="index.html#planes">Planes PAES</a>
+            <a href="index.html#particulares">Clases Particulares</a>
+            <a href="material.html">Material de Estudio</a>
+            <a href="blog.html">Blog</a>
+            <a href="index.html#faq">FAQ</a>
+        </div>
+        <a href="https://wa.me/+56953324625" class="nav-cta"><i class="fab fa-whatsapp"></i> Consultar ahora</a>
+        <button class="mobile-menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
+    </div>
+</nav>
+<div id="mobile-menu">
+    <a href="index.html#planes">Planes PAES</a>
+    <a href="index.html#particulares">Clases Particulares</a>
+    <a href="material.html">Material de Estudio</a>
+    <a href="blog.html">Blog</a>
+    <a href="index.html#faq">FAQ</a>
+    <a href="https://wa.me/+56953324625" class="m-cta"><i class="fab fa-whatsapp"></i>Consultar ahora</a>
+</div>
+
+<header class="hero">
+    <div class="hero-inner">
+        <div class="hero-badge">
+            <span class="dot"></span>
+            Aula privada — Solo alumnos inscritos
+        </div>
+        <h1>Intensivo de Química<br><em>PAES</em></h1>
+        <p>Aquí encontrarás todo el material de cada clase: el video de teoría, las guías y las sesiones en vivo grabadas. Ve a la card de la clase que necesites.</p>
+    </div>
+</header>
+
+<div class="trust-bar">
+    <div class="trust-bar-inner">
+        <div class="trust-item"><i class="fab fa-youtube"></i> Clase en video</div>
+        <div class="trust-item"><i class="fas fa-file-pdf"></i> Guía post video</div>
+        <div class="trust-item"><i class="fas fa-chalkboard-teacher"></i> Guía clase en vivo</div>
+        <div class="trust-item"><i class="fas fa-circle-play"></i> Sesión en vivo grabada</div>
+        <div class="trust-item"><i class="fas fa-folder-plus"></i> Guía complementaria</div>
+    </div>
+</div>
+
+<section>
+    <div class="section-inner">
+        <p class="section-label">Material del intensivo</p>
+        <h2 class="section-title">Las 6 clases del intensivo</h2>
+        <p class="section-sub">Cada card reúne los recursos de una clase. A medida que avanza el intensivo se irán activando los enlaces.</p>
+
+        <div class="clases-grid">
+
+            <!-- ============ CLASE 1 ============ -->
+            <div class="clase-card">
+                <div class="clase-head">
+                    <div class="clase-num">1</div>
+                    <div>
+                        <div class="clase-tag">Clase 1</div>
+                        <div class="clase-title">Leyes ponderales y balance de ecuaciones químicas</div>
+                    </div>
+                </div>
+                <ul class="resource-list">
+                    <!-- Pega aquí el enlace de YouTube -->
+                    <li><a class="resource-link" href="#" target="_blank" rel="noopener"><span class="r-icon youtube"><i class="fab fa-youtube"></i></span><span class="r-text">Clase en video (YouTube)</span><i class="fas fa-arrow-right r-arrow"></i></a></li>
+                    <!-- Pega aquí el enlace de Drive (guía post video) -->
+                    <li><a class="resource-link" href="#" target="_blank" rel="noopener"><span class="r-icon drive"><i class="fab fa-google-drive"></i></span><span class="r-text">Guía post video</span><i class="fas fa-arrow-right r-arrow"></i></a></li>
+                    <!-- Pega aquí el enlace de la guía para la clase en vivo -->
+                    <li><a class="resource-link" href="#" target="_blank" rel="noopener"><span class="r-icon live"><i class="fas fa-chalkboard-teacher"></i></span><span class="r-text">Guía de la clase en vivo</span><i class="fas fa-arrow-right r-arrow"></i></a></li>
+                    <!-- Pega aquí el enlace de la grabación de la sesión en vivo -->
+                    <li><a class="resource-link" href="#" target="_blank" rel="noopener"><span class="r-icon rec"><i class="fas fa-circle-play"></i></span><span class="r-text">Sesión en vivo grabada</span><i class="fas fa-arrow-right r-arrow"></i></a></li>
+                    <!-- Pega aquí el enlace de Drive (guía complementaria) -->
+                    <li><a class="resource-link" href="#" target="_blank" rel="noopener"><span class="r-icon extra"><i class="fas fa-folder-plus"></i></span><span class="r-text">Guía complementaria</span><i class="fas fa-arrow-right r-arrow"></i></a></li>
+                </ul>
+            </div>
+
+            <!-- ============ CLASE 2 ============ -->
+            <div class="clase-card">
+                <div class="clase-head">
+                    <div class="clase-num">2</div>
+                    <div>
+                        <div class="clase-tag">Clase 2</div>
+                        <div class="clase-title">Estequiometría (mol, masa molar, reactivo limitante y en exceso)</div>
+                    </div>
+                </div>
+                <ul class="resource-list">
+                    <li><a class="resource-link" href="#" target="_blank" rel="noopener"><span class="r-icon youtube"><i class="fab fa-youtube"></i></span><span class="r-text">Clase en video (YouTube)</span><i class="fas fa-arrow-right r-arrow"></i></a></li>
+                    <li><a class="resource-link" href="#" target="_blank" rel="noopener"><span class="r-icon drive"><i class="fab fa-google-drive"></i></span><span class="r-text">Guía post video</span><i class="fas fa-arrow-right r-arrow"></i></a></li>
+                    <li><a class="resource-link" href="#" target="_blank" rel="noopener"><span class="r-icon live"><i class="fas fa-chalkboard-teacher"></i></span><span class="r-text">Guía de la clase en vivo</span><i class="fas fa-arrow-right r-arrow"></i></a></li>
+                    <li><a class="resource-link" href="#" target="_blank" rel="noopener"><span class="r-icon rec"><i class="fas fa-circle-play"></i></span><span class="r-text">Sesión en vivo grabada</span><i class="fas fa-arrow-right r-arrow"></i></a></li>
+                    <li><a class="resource-link" href="#" target="_blank" rel="noopener"><span class="r-icon extra"><i class="fas fa-folder-plus"></i></span><span class="r-text">Guía complementaria</span><i class="fas fa-arrow-right r-arrow"></i></a></li>
+                </ul>
+            </div>
+
+            <!-- ============ CLASE 3 ============ -->
+            <div class="clase-card">
+                <div class="clase-head">
+                    <div class="clase-num">3</div>
+                    <div>
+                        <div class="clase-tag">Clase 3</div>
+                        <div class="clase-title">Composición porcentual, fórmula empírica y molecular</div>
+                    </div>
+                </div>
+                <ul class="resource-list">
+                    <li><a class="resource-link" href="#" target="_blank" rel="noopener"><span class="r-icon youtube"><i class="fab fa-youtube"></i></span><span class="r-text">Clase en video (YouTube)</span><i class="fas fa-arrow-right r-arrow"></i></a></li>
+                    <li><a class="resource-link" href="#" target="_blank" rel="noopener"><span class="r-icon drive"><i class="fab fa-google-drive"></i></span><span class="r-text">Guía post video</span><i class="fas fa-arrow-right r-arrow"></i></a></li>
+                    <li><a class="resource-link" href="#" target="_blank" rel="noopener"><span class="r-icon live"><i class="fas fa-chalkboard-teacher"></i></span><span class="r-text">Guía de la clase en vivo</span><i class="fas fa-arrow-right r-arrow"></i></a></li>
+                    <li><a class="resource-link" href="#" target="_blank" rel="noopener"><span class="r-icon rec"><i class="fas fa-circle-play"></i></span><span class="r-text">Sesión en vivo grabada</span><i class="fas fa-arrow-right r-arrow"></i></a></li>
+                    <li><a class="resource-link" href="#" target="_blank" rel="noopener"><span class="r-icon extra"><i class="fas fa-folder-plus"></i></span><span class="r-text">Guía complementaria</span><i class="fas fa-arrow-right r-arrow"></i></a></li>
+                </ul>
+            </div>
+
+            <!-- ============ CLASE 4 ============ -->
+            <div class="clase-card">
+                <div class="clase-head">
+                    <div class="clase-num">4</div>
+                    <div>
+                        <div class="clase-tag">Clase 4</div>
+                        <div class="clase-title">Soluciones y unidades de concentración (diluciones y solubilidad)</div>
+                    </div>
+                </div>
+                <ul class="resource-list">
+                    <li><a class="resource-link" href="#" target="_blank" rel="noopener"><span class="r-icon youtube"><i class="fab fa-youtube"></i></span><span class="r-text">Clase en video (YouTube)</span><i class="fas fa-arrow-right r-arrow"></i></a></li>
+                    <li><a class="resource-link" href="#" target="_blank" rel="noopener"><span class="r-icon drive"><i class="fab fa-google-drive"></i></span><span class="r-text">Guía post video</span><i class="fas fa-arrow-right r-arrow"></i></a></li>
+                    <li><a class="resource-link" href="#" target="_blank" rel="noopener"><span class="r-icon live"><i class="fas fa-chalkboard-teacher"></i></span><span class="r-text">Guía de la clase en vivo</span><i class="fas fa-arrow-right r-arrow"></i></a></li>
+                    <li><a class="resource-link" href="#" target="_blank" rel="noopener"><span class="r-icon rec"><i class="fas fa-circle-play"></i></span><span class="r-text">Sesión en vivo grabada</span><i class="fas fa-arrow-right r-arrow"></i></a></li>
+                    <li><a class="resource-link" href="#" target="_blank" rel="noopener"><span class="r-icon extra"><i class="fas fa-folder-plus"></i></span><span class="r-text">Guía complementaria</span><i class="fas fa-arrow-right r-arrow"></i></a></li>
+                </ul>
+            </div>
+
+            <!-- ============ CLASE 5 ============ -->
+            <div class="clase-card">
+                <div class="clase-head">
+                    <div class="clase-num">5</div>
+                    <div>
+                        <div class="clase-tag">Clase 5</div>
+                        <div class="clase-title">El átomo de carbono y representación de moléculas orgánicas</div>
+                    </div>
+                </div>
+                <ul class="resource-list">
+                    <li><a class="resource-link" href="#" target="_blank" rel="noopener"><span class="r-icon youtube"><i class="fab fa-youtube"></i></span><span class="r-text">Clase en video (YouTube)</span><i class="fas fa-arrow-right r-arrow"></i></a></li>
+                    <li><a class="resource-link" href="#" target="_blank" rel="noopener"><span class="r-icon drive"><i class="fab fa-google-drive"></i></span><span class="r-text">Guía post video</span><i class="fas fa-arrow-right r-arrow"></i></a></li>
+                    <li><a class="resource-link" href="#" target="_blank" rel="noopener"><span class="r-icon live"><i class="fas fa-chalkboard-teacher"></i></span><span class="r-text">Guía de la clase en vivo</span><i class="fas fa-arrow-right r-arrow"></i></a></li>
+                    <li><a class="resource-link" href="#" target="_blank" rel="noopener"><span class="r-icon rec"><i class="fas fa-circle-play"></i></span><span class="r-text">Sesión en vivo grabada</span><i class="fas fa-arrow-right r-arrow"></i></a></li>
+                    <li><a class="resource-link" href="#" target="_blank" rel="noopener"><span class="r-icon extra"><i class="fas fa-folder-plus"></i></span><span class="r-text">Guía complementaria</span><i class="fas fa-arrow-right r-arrow"></i></a></li>
+                </ul>
+            </div>
+
+            <!-- ============ CLASE 6 ============ -->
+            <div class="clase-card">
+                <div class="clase-head">
+                    <div class="clase-num">6</div>
+                    <div>
+                        <div class="clase-tag">Clase 6</div>
+                        <div class="clase-title">Compuestos orgánicos: hidrocarburos, grupos funcionales y nomenclatura</div>
+                    </div>
+                </div>
+                <ul class="resource-list">
+                    <li><a class="resource-link" href="#" target="_blank" rel="noopener"><span class="r-icon youtube"><i class="fab fa-youtube"></i></span><span class="r-text">Clase en video (YouTube)</span><i class="fas fa-arrow-right r-arrow"></i></a></li>
+                    <li><a class="resource-link" href="#" target="_blank" rel="noopener"><span class="r-icon drive"><i class="fab fa-google-drive"></i></span><span class="r-text">Guía post video</span><i class="fas fa-arrow-right r-arrow"></i></a></li>
+                    <li><a class="resource-link" href="#" target="_blank" rel="noopener"><span class="r-icon live"><i class="fas fa-chalkboard-teacher"></i></span><span class="r-text">Guía de la clase en vivo</span><i class="fas fa-arrow-right r-arrow"></i></a></li>
+                    <li><a class="resource-link" href="#" target="_blank" rel="noopener"><span class="r-icon rec"><i class="fas fa-circle-play"></i></span><span class="r-text">Sesión en vivo grabada</span><i class="fas fa-arrow-right r-arrow"></i></a></li>
+                    <li><a class="resource-link" href="#" target="_blank" rel="noopener"><span class="r-icon extra"><i class="fas fa-folder-plus"></i></span><span class="r-text">Guía complementaria</span><i class="fas fa-arrow-right r-arrow"></i></a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-inner">
+        <div class="footer-logo">Profe<span>Ezequiel</span></div>
+        <div class="footer-links">
+            <a href="https://www.instagram.com/profeezequiel_cl?igsh=NWU2bmh0M3V0NG50"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="https://www.tiktok.com/@profeezequiel_cl?_r=1&_t=ZS-9542kXK3Gsu"><i class="fab fa-tiktok"></i> TikTok</a>
+            <a href="https://youtube.com/@profeezequiel_cl?si=KogLi15Li8GCYX1z"><i class="fab fa-youtube"></i> YouTube</a>
+        </div>
+        <div class="footer-copy">© 2026 ProfeEzequiel — Valdivia, Chile. Clases de Química online y presencial.</div>
+    </div>
+</footer>
+
+<a href="https://wa.me/+56953324625" target="_blank" class="wa-float"><i class="fab fa-whatsapp"></i></a>
+
+<script>
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => {
+        const open = mobileMenu.style.display === 'block';
+        mobileMenu.style.display = open ? 'none' : 'block';
+        menuBtn.innerHTML = open ? '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>';
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        mobileMenu.style.display = 'none';
+        menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+    }));
+
+    // Evitar que los enlaces aún sin configurar (#) salten al inicio
+    document.querySelectorAll('.resource-link[href="#"]').forEach(a => {
+        a.addEventListener('click', e => e.preventDefault());
+    });
+</script>
+
+</body>
+</html>
